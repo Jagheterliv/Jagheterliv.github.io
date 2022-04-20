@@ -1,0 +1,53 @@
+<html>
+	<!-- Du måste alltid skriva html runt dina program -->
+	
+	<!-- head skriver man runt allmän information om programmet -->
+	<head>
+		<title>Livs program!!!</title>
+	</head>
+	
+	<!-- Body: Här skriver du vad som ska visas på sidan -->
+	<body>
+		
+		<!-- Detta är vad som visas -->
+		<h1>Livs program</h1>
+		<p>Vad heter du?</p>
+		<input id="indata"></input><button id="ok" onclick="trycktePaoOk()">OK</button>
+		<h2>Resultat</h2>
+		<p id="resultat"></p>
+		
+		<!-- Här skriver man koden som ska köras när man trycker på OK -->
+		<script>
+			var daoligaSaker = ["svartsvansad åsnehare", "ullhårig mammut", "bladlus", "tvestjärt", "huggorm", "fläskänger", "mögelråtta", "vårtbitare"];
+			var fula = ["möglig", "illaluktande", "svampig", "dryg", "skallig","husnummerflexande"];
+			var fina = ["väldoftande", "snygg", "underbar", "helt enkelt fantastisk", "välartad","vis","elegant", "intelligent"];
+			var braSaker = ["kisse", "vovve" ,"häst","anka","chokladkaka"];
+		    
+			function randInt(n) {
+				return Math.floor(n*Math.random());
+			}
+			
+			function pickRandom(arr) {
+				return arr[randInt(arr.length)];
+			}
+		
+			function trycktePaoOk() {
+				var namn = document.getElementById("indata").value;
+				
+				
+				var beskrivande = fula;
+				var djurnamn = daoligaSaker;
+				var lowercaseName = namn.toLowerCase();
+				var braNamn = ["liv", "jonas","solvej","august"];
+				
+				
+				if (braNamn.includes(lowercaseName)) {
+					beskrivande = fina;
+					djurnamn = braSaker;
+				}
+				
+				document.getElementById("resultat").innerText = `${namn} är en ${pickRandom(beskrivande)} ${pickRandom(djurnamn)}`;
+			}
+		</script>
+	</body>
+</html>
