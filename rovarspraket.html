@@ -1,0 +1,48 @@
+<html>
+	<!-- Du måste alltid skriva html runt dina program -->
+	
+	<!-- head skriver man runt allmän information om programmet -->
+	<head>
+		<title>Livs program!!!</title>
+	</head>
+	
+	<!-- Body: Här skriver du vad som ska visas på sidan -->
+	<body>
+		
+		<!-- Detta är vad som visas -->
+		<h1>Livs program</h1>
+		<p>Vad vill du översätta?</p>
+		<input id="indata"></input><button id="ok" onclick="trycktePaoOk()">OK</button>
+		<h2>Resultat</h2>
+		<p id="resultat"></p>
+		
+		<!-- Här skriver man koden som ska köras när man trycker på OK -->
+		<script>
+			var konsonanter = "bcdfghjklmnpqrstvwxz";
+			function oversattKonsonant(kattskit){
+				return kattskit+"o"+kattskit;
+			}
+			function oversattTecken(tecken) {
+				if (konsonanter.includes(tecken)) {
+					return oversattKonsonant(tecken);
+				} else {
+					return tecken;
+				}
+			}
+			
+			function oversatt(meningBlandade) {
+				var mening = meningBlandade.toLowerCase();
+				var resultat = "";
+				for (var i = 0; i < mening.length; i++) {
+					resultat = resultat + oversattTecken(mening[i]);
+				}
+				return resultat;
+			}
+		
+			function trycktePaoOk() {
+				var mening = document.getElementById("indata").value;
+				document.getElementById("resultat").innerText = oversatt(mening);
+			}
+		</script>
+	</body>
+</html>
